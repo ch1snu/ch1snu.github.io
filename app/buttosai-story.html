@@ -59,7 +59,7 @@
 
 		async function renderS() {
 			try {
-				const response = await fetch('http://localhost:5000/story');
+				const response = await fetch('https://buttosai.onrender.com/story');
 				const S = await response.json();
 				const C = document.getElementById('C');
 				const p = document.getElementById('p');
@@ -88,7 +88,7 @@
 		}
 
 		async function deleteStory(id) {
-			const response = await fetch(`http://localhost:5000/story/delete/${id}`, {
+			const response = await fetch(`https://buttosai.onrender.com/story/delete/${id}`, {
 				method: 'DELETE'
 			});
 			const message = await response.json();
