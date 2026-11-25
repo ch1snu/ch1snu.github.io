@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Buttosai</title>
+
+     <link rel="icon" type="image/png" href="img/buttosai-katana.png">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tiny5+Duo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+     <style>
+          * {
+			font-family: "Tiny5 Duo", sans-serif;
+			background-color: black;
+			color: white;
+			box-sizing: border-box;
+		}
+
+		body {
+			max-width: 900px; 
+			margin: 80px auto; 
+			padding: 0 24px;  
+			line-height: 1.8;
+		}
+
+          .buttosai {
+               width: 250px;
+               height: auto;
+               image-rendering: pixelated;
+			margin-top: 0px;
+          }
+
+     </style>
+</head>
+<body>
+     
+     <p style="font-size: 40px; margin-bottom: 0px;">Buttosai - To Do List</p>
+	<button style="margin-top: 0px; background-color: brown;"><a style="background-color: crimson; color: white; text-decoration: none;" href="/app/buttosai-story.html">View story</a></button>
+	<hr>
+     <img class="buttosai" src="img/buttosai-pixel2.gif" alt="">
+	<img class="buttosai" src="img/buttosai-pixel.gif" alt="">
+	<img width="190px" src="img/buttosai-pixel3.gif" alt="">
+	<br><br>
+
+	<hr>
+
+	<form action="http://localhost:5000/addstory" method="POST">
+		<div>
+			<p style="font-size: 25px; margin-bottom: 0px; text-decoration: underline;">Story</p><br>
+			<input name="head" required style="width: 300px; border-radius: 5px; margin-top: 0px; background-color: white; color: black;" class="text-input" type="text" placeholder="head...">
+			<p style="font-size: 25px; margin-bottom: 0px; text-decoration: underline;">Content</p><br>
+			<textarea name="content" required style="width: 300px; height: 200px; border-radius: 10px; margin-top: 0px; background-color: white; color: black;" class="text-input" placeholder="content..."></textarea>
+			<br>
+			<button type="submit" style="background-color:green; color: white; margin-left: 20px; width: 50px;">OK</button>
+		</div>
+	</form>
+
+	<hr>
+	<br>
+     
+</body>
+</html>

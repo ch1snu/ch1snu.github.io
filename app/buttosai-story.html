@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Buttosai Story</title>
+
+     <link rel="icon" type="image/png" href="img/buttosai-katana.png">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tiny5+Duo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+      <style>
+          * {
+			font-family: "Tiny5 Duo", sans-serif;
+			background-color: black;
+			color: white;
+			box-sizing: border-box;
+		}
+
+		body {
+			max-width: 900px; 
+			margin: 80px auto; 
+			padding: 0 24px;  
+			line-height: 1.8;
+		}
+
+          .buttosai {
+               width: 250px;
+               height: auto;
+               image-rendering: pixelated;
+			margin-top: 0px;
+          }
+		
+     </style>
+</head>
+<body>
+
+     <p style="font-size: 40px; margin-bottom: 0px;">Buttosai - Story</p>
+	<button style="margin-top: 0px; background-color: brown;"><a style="background-color: crimson; text-decoration: none;" href="/app/buttosai.html">Add Story</a></button>
+	<hr>
+     <img class="buttosai" src="img/buttosai-pixel2.gif" alt="">
+	<img class="buttosai" src="img/buttosai-pixel.gif" alt="">
+	<img width="190px" src="img/buttosai-pixel3.gif" alt="">
+	<br><br>
+
+	<hr>
+
+	<p id="p" style="text-align: center; color: brown; font-size: 40px;">No Story</p>
+
+	<div id="C"></div>
+
+	<script>
+
+		async function renderS() {
+			try {
+				const response = await fetch('http://localhost:5000/story');
+				const S = await response.json();
+				const C = document.getElementById('C');
+				const p = document.getElementById('p');
+				if (S.length < 1) {
+					
+				} else {
+					p.style.display = "none";
+					S.forEach(story => {
+						const J = document.createElement('span');
+						J.innerHTML = `
+							[<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"head": "${story.head}",<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "${story.content}",<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date time": "${story.dateT}"<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+							]<br>
+							<button onclick="deleteStory('${story._id}')" style="color: green;">Successfully</button><br>
+						`;
+						C.appendChild(J);
+					});
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		async function deleteStory(id) {
+			const response = await fetch(`http://localhost:5000/story/delete/${id}`, {
+				method: 'DELETE'
+			});
+			const message = await response.json();
+			alert(message.message);
+			location.reload();
+		}
+
+		renderS();
+	</script>
+     
+</body>
+</html>
